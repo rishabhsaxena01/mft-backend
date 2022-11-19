@@ -13,7 +13,6 @@ class SubscriptionController {
     }
 
     static addSubscription = async (req, res) => {
-        console.log("called");
         try {
 
             const { email } = req.body;
