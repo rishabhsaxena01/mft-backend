@@ -4,6 +4,7 @@ import { connectDB } from "./database/db.js";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import dotenv from "dotenv"
+import path from "path";
 
 const app=express();
 
@@ -20,6 +21,7 @@ app.use(cors({
 app.use(express.json())
 app.use("/",routes);
 app.use(express.urlencoded({extended:false}));
+app.use(express.static(path.join(path.resolve(), "uploads")));
 
 app.listen(PORT,()=>{
     console.log(`App Running at http://localhost:${PORT}`);

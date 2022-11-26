@@ -44,8 +44,12 @@ class FranchiseController {
                 res.status(403).json("Please Fill all the Details");
                 return;
             }
+            const editedFranchise= new franchiseModel({
+                _id:req.params.id,
+                ...req.body
+            })
 
-            const result = await franchiseModel.findByIdAndUpdate(req.params.id, new franchiseModel(req.body), { returnDocument: "after" });
+            const result = await franchiseModel.findByIdAndUpdate(req.params.id, editedFranchise, { returnDocument: "after" });
             res.status(201).json(result);
         }
         catch (err) {

@@ -55,18 +55,18 @@ class CustomerController {
             }
 
             const customer = new customerModel({
-                firstName, lastName, email, contact, dob, address, gender, personalTraining, packageAdopt, programType, tAndC
+                _id:req.params.id, firstName, lastName, email, contact, dob, address, gender, personalTraining, packageAdopt, programType, tAndC
             })
             if (req.file) {
                 //if new picture was there then delete the previous one
                 const previous = await customerModel.findById(req.params.id);
-                fs.unlink(path.join(path.resolve(), "../", "uploads", previous.image), (err) => err ? console.log("error removing file", err) : "");
+                fs.unlink(path.join(path.resolve(), "uploads", previous.image), (err) => err ? console.log("error removing file", err) : "");
                 customer = {
                     ...customer,
                     image: req.file.filename
                 }
             }
-
+            console.log(customer)
             const result = await customerModel.findByIdAndUpdate(req.params.id, customer, { returnDocument: "after" });
             res.status(201).json(result);
         }
@@ -90,7 +90,7 @@ class CustomerController {
     static deleteCustomer = async (req, res) => {
         try {
             const result = await customerModel.findByIdAndDelete(req.params.id);
-            fs.unlink(path.join(path.resolve(), "../", "uploads", result.image), (err) => err ? console.log("error removing file", err) : "");
+            fs.unlink(path.join(path.resolve(), "uploads", result.image), (err) => err ? console.log("error removing file", err) : "");
             res.status(201).json(result);
         }
         catch (err) {
