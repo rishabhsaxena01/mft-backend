@@ -39,10 +39,9 @@ class FranchiseController {
     static editFranchise = async (req, res) => {
         try {
 
-            const { name, phone, email, state, city, companyName, companyWebsite, turnOver, amountForInvestment} = req.body;
-            if (!name || !phone || !email || !state || !city || !companyName || !companyWebsite || !turnOver || !amountForInvestment) {
-                res.status(403).json("Please Fill all the Details");
-                return;
+            const { name, phone, email, state, city} = req.body;
+            if (!name || !phone || !email || !state || !city ) {
+                return res.status(403).json({message: "Please Fill all the Details"});
             }
             const editedFranchise= new franchiseModel({
                 _id:req.params.id,

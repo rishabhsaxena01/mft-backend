@@ -46,6 +46,7 @@ router.delete("/subscription/delete/:id", auth, SubscriptionController.deleteSub
 router.post("/registerUser", UserController.addUser);                                 // admin side route          
 router.post("/loginUser", UserController.getUserByEmail);                             // admin side route
 router.post("/logoutUser", UserController.logout);                                    // admin side route
+router.put("/changePassword", UserController.changePassword);                                    // admin side route
 
 export default router;
 

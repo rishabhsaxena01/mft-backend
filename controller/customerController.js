@@ -17,13 +17,13 @@ class CustomerController {
         try {
             const { firstName, lastName, email, contact, dob, address, gender, personalTraining, packageAdopt, programType, tAndC } = req.body;
             if (!firstName || !lastName || !email || !contact || !dob || !address || !gender || !String(personalTraining) || !packageAdopt || !programType || !String(tAndC)) {
-                res.status(403).json("Please Fill all the Details");
+                res.status(403).json({message: "Please Fill all the Details"});
                 return;
             }
 
             const preRecord = await customerModel.findOne({ email: email });
             if (preRecord) {
-                res.status(409).json("Customer Already Registered With this Email Id");
+                res.status(409).json({message: "Customer Already Registered With this Email Id"});
                 return
             }
 
@@ -50,8 +50,8 @@ class CustomerController {
 
             const { firstName, lastName, email, contact, dob, address, gender, personalTraining, packageAdopt, programType, tAndC } = req.body;
             if (!firstName || !lastName || !email || !contact || !dob || !address || !gender || !String(personalTraining) || !packageAdopt || !programType || !String(tAndC)) {
-                res.status(403).json("Please Fill all the Details");
-                return;
+                return res.status(403).json({message: "Please Fill all the Details"});
+                
             }
 
             const customer = new customerModel({
@@ -66,7 +66,6 @@ class CustomerController {
                     image: req.file.filename
                 }
             }
-            console.log(customer)
             const result = await customerModel.findByIdAndUpdate(req.params.id, customer, { returnDocument: "after" });
             res.status(201).json(result);
         }

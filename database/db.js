@@ -27,7 +27,7 @@ const franchiseSchema = mongoose.Schema({
     email: { type: String, required: true },
     state: { type: String, required: true },
     city: { type: String, required: true },
-    companyName: { type: String, required: true },
+    companyName: { type: String, required: false },
     companyWebsite: { type: String, required: false },
     turnOver: { type: Number, required: false },
     amountForInvestment: { type: Number, required: false }
