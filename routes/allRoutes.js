@@ -3,6 +3,7 @@ import CustomerController from "../controller/customerController.js";
 import FranchiseController from "../controller/franchiseController.js";
 import SubscriptionController from "../controller/subscriptionController.js";
 import UserController from "../controller/userController.js";
+import ContactController from "../controller/ContactController.js";
 import auth from '../Middleware/auth.js';
 import multer from 'multer';
 import {nanoid} from 'nanoid';
@@ -42,6 +43,11 @@ router.delete("/franchise/delete/:id", auth, FranchiseController.deleteFranchise
 router.post("/subscription/add", SubscriptionController.addSubscription);        //customer side route
 router.get("/subscription/getAll", auth, SubscriptionController.getAllSubscription);   //admin side route
 router.delete("/subscription/delete/:id", auth, SubscriptionController.deleteSubscription);        //admin side route
+
+
+router.post("/contact/add", ContactController.addContact);                   //customer side route
+router.get("/contact/getAll", auth, ContactController.getAllContact);              //admin side route
+router.delete("/contact/delete/:id", auth, ContactController.deleteContact);       //admin side route 
 
 router.post("/registerUser", UserController.addUser);                                 // admin side route          
 router.post("/loginUser", UserController.getUserByEmail);                             // admin side route

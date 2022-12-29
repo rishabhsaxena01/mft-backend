@@ -43,11 +43,22 @@ const userSchema = mongoose.Schema({
     password: { type: String, required: true },
 });
 
+const contactSchema = mongoose.Schema({
+    name: { type: String, required: true },
+    email: { type: String, required: true},
+    number: { type: Number, required: true },
+    subject: {type: String, required: true},
+    location: {type: String, required: true},
+    query: {type: String, required: true}
+})
+
 const customerModel = mongoose.model("customer", customerSchema);
 const franchiseModel = mongoose.model("franchise", franchiseSchema);
 const subscriptionModel = mongoose.model("subscription", subscriptionSchema);
 const userModel = mongoose.model('user', userSchema);
+const contactModel = mongoose.model('contact', contactSchema);
 
-export { connectDB, customerModel, franchiseModel, subscriptionModel, userModel }
+
+export { connectDB, customerModel, franchiseModel, subscriptionModel, userModel, contactModel }
 
 
