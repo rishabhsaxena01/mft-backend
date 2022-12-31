@@ -40,8 +40,10 @@ class UserController {
 
       //set it in cookie
       res.cookie("jwtToken", token, {
-        expires: new Date(Date.now() + 300000),
-        httpOnly: false,
+        httpOnly:true,
+        maxAge:3600000*5,
+        secure:true,
+        sameSite:'none',
       });
 
       //return saved user
@@ -77,8 +79,10 @@ class UserController {
 
         //set it in cookie
         res.cookie("jwtToken", token, {
-          expires: new Date(Date.now() + 25892000000),
-          httpOnly: false,
+          httpOnly:true,
+       maxAge:3600000*5,
+       secure:true,
+       sameSite:'none',
         });
 
         //return valid user
