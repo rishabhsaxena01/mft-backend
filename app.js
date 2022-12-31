@@ -15,7 +15,7 @@ const PORT= process.env.PORT || 8000;
 connectDB();
 app.use(cookieParser())
 app.use(cors({
-    origin:['http://127.0.0.1:5500', 'http://localhost:3000', 'https://admin-mftgym.netlify.app'],
+    origin:['http://127.0.0.1:5500', 'http://localhost:3000', 'https://admin-mftgym.netlify.app', 'https://mftgym.netlify.app'],
     credentials:true,
 }));
 app.use(express.json())
