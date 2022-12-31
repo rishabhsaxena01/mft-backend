@@ -41,7 +41,7 @@ router.delete("/franchise/delete/:id", auth, FranchiseController.deleteFranchise
 
 
 router.post("/subscription/add", SubscriptionController.addSubscription);        //customer side route
-router.get("/subscription/getAll", auth, SubscriptionController.getAllSubscription);   //admin side route
+router.get("/subscription/getAll", SubscriptionController.getAllSubscription);   //admin side route
 router.delete("/subscription/delete/:id", auth, SubscriptionController.deleteSubscription);        //admin side route
 
 
