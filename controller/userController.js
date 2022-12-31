@@ -41,7 +41,7 @@ class UserController {
       //set it in cookie
       res.cookie("jwtToken", token, {
         expires: new Date(Date.now() + 300000),
-        httpOnly: true,
+        // httpOnly: true,
       });
 
       //return saved user
@@ -78,7 +78,7 @@ class UserController {
         //set it in cookie
         res.cookie("jwtToken", token, {
           expires: new Date(Date.now() + 25892000000),
-          httpOnly: true,
+          // httpOnly: true,
         });
 
         //return valid user
@@ -98,7 +98,7 @@ class UserController {
   static logout = async (req, res) => {
     try {
       res.cookie("jwtToken", "", {
-        httpOnly: true,
+        // httpOnly: true,
         expires: new Date(0),
       });
       return res.status(200).json({ message: "Log Out Successfully" });
